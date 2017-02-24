@@ -33,6 +33,9 @@
       if (location.protocol != 'https:') {
        location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
       }
+
+      document.title = "Un mensaje de "+window.atob(arr[1]);
+
       params = window.location.search.substring(1);
       arr = params.replace(/(m\*|f\*)/gi,'').split("**");
       $(".message-box").text(window.atob(arr[0]));
