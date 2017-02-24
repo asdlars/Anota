@@ -35,9 +35,9 @@ if ($_GET['m']=="" && $_GET['f']=="") {
   </head>
   <body>
 
-  <div class="links"><a href="/">&larr; volver a anota.drop.cl</a></div>
-  <div class="message-box fill"><?php echo $msg; ?></div>
-  <div class="firma"><?php echo $firma; ?></div>
+  <div class="links"><a href="/">&larr; volver a Anota!</a></div>
+  <div class="message-box fill"></div>
+  <div class="firma"></div>
   <div class="notice">Para pantalla completa cliquea el mensaje</div>
 
     <!-- Le javascript
@@ -79,7 +79,9 @@ if ($_GET['m']=="" && $_GET['f']=="") {
 
   <script type="text/javascript">
     params = window.location.search.substring(1);
-
+    arr = params.replace(/[mf=]/gi,'').split("&");
+    $(".message-box").text(arr[0]);
+    $(".firma").text(arr[1]);
 
   </script>
 
