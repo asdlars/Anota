@@ -19,64 +19,69 @@
     <![endif]-->
   </head>
   <body>
+    <div class="links"><a href="index.html">&larr; volver a Anota!</a></div>
+    <div class="message-box fill"></div>
+    <div class="firma"></div>
+    <div class="notice" style="position: absolute; top: 0; right: 0; background: black; color: white; font-weight: bold; padding: 0 3px;">Para pantalla completa cliquea el mensaje</div>
 
-  <div class="links"><a href="index.html">&larr; volver a Anota!</a></div>
-  <div class="message-box fill"></div>
-  <div class="firma"></div>
-  <div class="notice" style="position: absolute; top: 0; right: 0; background: black; color: white; font-weight: bold; padding: 0 3px;">Para pantalla completa cliquea el mensaje</div>
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-full-house.js"></script>
     <script type="text/javascript" src="js/jquery.fullscreen-0.3.5.min.js"></script>
 
-  <script>
-  // fixes stupid ILLEGAL TOKEN ERROR
-  function initialize() {
-    $(".simplest .fill, .another .fill").each(function() {
-      var element = $(this)
-      options = {}
+    <script type="text/javascript">
+      if (location.protocol != 'https:') {
+       location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+      }
+      params = window.location.search.substring(1);
+      arr = params.replace(/(m\*|f\*)/gi,'').split("**");
+      $(".message-box").text(window.atob(arr[0]));
+      $(".firma").text(window.atob(arr[1]));
+    </script>
 
-      if (element.hasClass("collapse"))
-      options.collapse = true
+    <script type="text/javascript">
+      // fixes stupid ILLEGAL TOKEN ERROR
+      function initialize() {
+        $(".simplest .fill, .another .fill").each(function() {
+          var element = $(this)
+          options = {}
 
-      element.fill_with_text(options)
-    })
+          if (element.hasClass("collapse"))
+          options.collapse = true
 
-    var to_be_filled = $(".advanced .fill")
+          element.fill_with_text(options)
+        })
 
-    to_be_filled.eq(0).fill_with_text({ Font_size_increment_step: 10 }) // also you can try {  } for binary search
-    to_be_filled.eq(1).fill_with_text()
-    to_be_filled.eq(2).fill_with_text({ algorythm: "Binary" }) // default algorythm, but not so easy to understand
-    to_be_filled.eq(3).fill_with_text({ algorythm: "Linear" }) // slow algorythm, but basic for understanding
-  }
+        var to_be_filled = $(".advanced .fill")
 
-  $(initialize);
+        to_be_filled.eq(0).fill_with_text({ Font_size_increment_step: 10 }) // also you can try {  } for binary search
+        to_be_filled.eq(1).fill_with_text()
+        to_be_filled.eq(2).fill_with_text({ algorythm: "Binary" }) // default algorythm, but not so easy to understand
+        to_be_filled.eq(3).fill_with_text({ algorythm: "Linear" }) // slow algorythm, but basic for understanding
+      }
 
-  $(window).resize(function(){
-    $(".fill").fill_with_text();
-  });
+      $(initialize);
 
-  </script>
+      $(window).resize(function(){
+        $(".fill").fill_with_text();
+      });
+    </script>
+    <script>
+      $(".fill").fill_with_text();
+      $(".fill").click(function() {
+       $(".fill").fullscreen();
+       $(".fill").fullscreen();
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  <script type="text/javascript">
-    params = window.location.search.substring(1);
-    arr = params.replace(/(m\*|f\*)/gi,'').split("**");
-    $(".message-box").text(window.atob(arr[0]));
-    $(".firma").text(window.atob(arr[1]));
+      ga('create', 'UA-45253602-4', 'auto');
+      ga('send', 'pageview');
 
-  </script>
-
-
-  <script>
-    $(".fill").fill_with_text();
-    $(".fill").click(function() {
-     $(".fill").fullscreen();
-     $(".fill").fullscreen();
-    });
-  </script>
+    </script>
   </body>
 </html>
