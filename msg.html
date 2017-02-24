@@ -64,9 +64,9 @@
 
   <script type="text/javascript">
     params = window.location.search.substring(1);
-    arr = params.replace(/[mf=]/gi,'').split("&");
-    $(".message-box").text(arr[0]);
-    $(".firma").text(arr[1]);
+    arr = params.replace(/(m*|f*)/gi,'').split("**");
+    $(".message-box").text(window.atob(arr[0]));
+    $(".firma").text(window.atob(arr[1]));
 
   </script>
 
