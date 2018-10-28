@@ -1,14 +1,11 @@
-<?php 
-if ($_GET['m']=="" && $_GET['f']=="") {
-  $msg = "Hola, algo salió mal. Favor intenta crear nuevamente tu nota. Gracias.";
+<?php
+if ($_GET['m']=="") {
+  $msg = "Hola, algo salió mal :( intenta de nuevo, gracias.";
   $firma = "Larry";
 } else {
   $msg = $_GET['m'];
   $firma = $_GET['f'];
 }
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
