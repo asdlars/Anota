@@ -46,9 +46,9 @@
     </script>
 
     <script type="text/javascript">
-      // fixes stupid ILLEGAL TOKEN ERROR
+      //fixes ILLEGAL TOKEN ERROR
       function initialize() {
-        $(".simplest .fill, .another .fill").each(function() {
+        $(".fill").each(function() {
           var element = $(this)
           options = {}
 
@@ -58,9 +58,9 @@
           element.fill_with_text(options)
         })
 
-        var to_be_filled = $(".advanced .fill")
+        var to_be_filled = $(" .fill")
 
-        to_be_filled.eq(0).fill_with_text({ Font_size_increment_step: 5 }) // also you can try {  } for binary search
+        to_be_filled.eq(0).fill_with_text({ }) // also you can try {  } for binary search
         //to_be_filled.eq(1).fill_with_text()
         //to_be_filled.eq(2).fill_with_text({ algorythm: "Binary" }) // default algorythm, but not so easy to understand
         //to_be_filled.eq(3).fill_with_text({ algorythm: "Linear" }) // slow algorythm, but basic for understanding
