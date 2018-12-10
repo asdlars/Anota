@@ -48,12 +48,17 @@ if ($_GET['m']=="") {
       $(".message-box").text(window.atob(arr[0]));
       $(".firma").text(window.atob(arr[1]));
 
-      $(".fill").fill_with_text({ })
+
       $(window).resize(function(){
-        $(".fill").fill_with_text({ });
+        $(".fill").fill_with_text();
+      });
+      $( document ).ready(function() {
+          console.log( "Anotanding!!" );
+          $(".fill").fill_with_text();
       });
       $(".fill").click(function() {
-        $(".fill").fullscreen();
+       $(".fill").fullscreen();
+       $(".fill").fullscreen();
       });
     </script>
     <script>
