@@ -1,6 +1,5 @@
 .message-box {
 	z-index: 1;
-	padding: 0px;
 	display: block;
 	position: absolute;
 	height: auto;
@@ -8,15 +7,16 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	margin: 0px;
 	background-color: #000;
+	margin: 5vh 2vw;
+	padding: 1vh 1vw;
 }
 .message {
+	margin: 0px;
+	padding: 0 0 0 0;
 	display: block;
 	position: absolute;
 	height: auto;
-	margin: 0px;
-	padding: 0 0 30px 0;
 	color: rgb(18, 130, 223);
 	text-align: center;
 	font-weight: bold;
