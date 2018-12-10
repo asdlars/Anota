@@ -1,12 +1,3 @@
-<?php
-if ($_GET['m']=="") {
-  $msg = "Hola, algo salió mal. Favor intenta crear nuevamente tu nota. Gracias.";
-  $firma = "Larry";
-} else {
-  $msg = $_GET['m'];
-  $firma = $_GET['f'];
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,9 +20,11 @@ if ($_GET['m']=="") {
   </head>
   <body>
     <div class="links"><a href="index.html">&larr; volver a Anota!</a></div>
-    <div class="message-box fill"></div>
-    <div class="firma"></div>
-    <div class="notice" style="position: absolute; top: 0; right: 0; background: black; color: white; font-weight: bold; padding: 0 3px;">Para pantalla completa cliquea el mensaje</div>
+    <div class="message-box fill">
+      <div class="message"></div>
+      <div class="firma"></div>
+    </div>
+    <div class="notice tip">Para pantalla completa apreta "F" o cliquea el mensaje // For fullscreen press "F" or click the message</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -39,22 +32,44 @@ if ($_GET['m']=="") {
     <script type="text/javascript" src="js/jquery.fullscreen-0.3.5.min.js"></script>
 
     <script type="text/javascript">
-      if (location.protocol != 'https:') {
-       location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-      }
+      //Always go to https
+      //if (location.protocol != 'https:') {
+       //location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+      //}
+
+      //Getting and resizing text
       params = window.location.search.substring(1);
       arr = params.replace(/(m\*|f\*)/gi,'').split("**");
+      msg = window.atob(arr[0]);
+      firma = window.atob(arr[1]);
       document.title = "Un mensaje de "+window.atob(arr[1]);
-      $(".message-box").text(window.atob(arr[0]));
-      $(".firma").text(window.atob(arr[1]));
-
-      $(".fill").fill_with_text();
-      $( document ).ready(function() {
-          console.log( "Anotanding!" );
+      if (msg == "") {
+         msg = "Oops, algo salió mal. Por favor intenta nuevamente. Gracias :$";
+         firma = "Larry"
+      }
+      $(".message").text(msg);
+      $(".firma").text(firma);
+      $(document).ready(function() {
           $(".fill").fill_with_text();
       });
+      $(window).resize(function() {
+        $(".fill").fill_with_text();
+      })
+
+      //Fullscreen
+      function goFullScreen(element) {
+         $(element).fullscreen({toggleClass: 'pantalla-completa'});
+         if ($(".pantalla-completa")) {
+           $.fullscreen.exit();
+         }
+      }
       $(".fill").click(function() {
-       $(".fill").fullscreen();
+        goFullScreen($(this));
+      });
+      $(document).keypress(function( event ) {
+        if (event.which == 102) {
+          goFullScreen($(".fill"));
+        }
       });
     </script>
     <script>
