@@ -66,16 +66,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
-      if (location.protocol != 'https:') {
-       location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-      }
-      $('.form-control').on( "change keyup paste", function() {
-        id = $(this).attr("id");
-        val = window.btoa($(this).val());
-        $(this).attr(id.charAt(0),val);
-      });
+      //if (location.protocol != 'https:') {
+       //location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+      //}
       $('#anotar').on("click", function(event) {
         event.preventDefault();
+        //update params for sending
+        $('.form-control').each(function() {
+          id = $(this).attr("id");
+          val = window.btoa($(this).val());
+          $(this).attr(id.charAt(0),val);
+        });
+        //send params
         window.location.href = "msg.html?m*"+$('#mensaje').attr("m")+"**f*"+$('#firma').attr("f");
       });
     </script>
